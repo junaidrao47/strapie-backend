@@ -1,0 +1,83 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "singularName": "product",
+    "pluralName": "products",
+    "displayName": "Product",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "required": true,
+      "targetField": "name"
+    },
+    "description": {
+      "type": "blocks",
+      "required": true
+    },
+    "price": {
+      "required": true,
+      "type": "decimal"
+    },
+    "image": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "products"
+    },
+    "categories": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::category.category",
+      "inversedBy": "product"
+    },
+    "Featured": {
+      "type": "boolean",
+      "required": true
+    },
+    "Available": {
+      "type": "boolean"
+    },
+    "Ingredients": {
+      "type": "blocks"
+    },
+    "Nutritional": {
+      "type": "json"
+    },
+    "PreparationTime": {
+      "type": "integer"
+    },
+    "SpiceLevel": {
+      "type": "enumeration",
+      "enum": [
+        "Mild,",
+        "Medium,",
+        "Hot,",
+        "Extra Hot"
+      ]
+    },
+    "Discount": {
+      "type": "decimal"
+    }
+  }
+}
